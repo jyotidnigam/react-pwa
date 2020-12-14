@@ -1,0 +1,113 @@
+.background-section {
+    background-color: #202931;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .content-wrapper {  
+        opacity: 1; 
+        transition: opacity 5s;
+        padding-right: 3vw;
+        padding-left: 3vw;
+        // margin: 0 auto;
+        top: 0;
+        bottom: 0;
+        box-sizing: content-box;
+        .card-img {
+            -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+            -moz-animation: fadein 2s; /* Firefox < 16 */
+            -ms-animation: fadein 2s; /* Internet Explorer */
+            -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+            height: 99.8vh;
+          
+        }
+        .card-img-overlay {
+            top: auto;
+        }
+        .container {
+            width: 30%;
+            align-items: center;
+        .game-dashboard{
+            height: 100vh;
+            .card-img {
+                height: 99.8vh;
+                -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+                -moz-animation: fadein 2s; /* Firefox < 16 */
+                -ms-animation: fadein 2s; /* Internet Explorer */
+                -o-animation: fadein 2s; /* Opera < 12.1 */
+                animation: fadein 2s;
+            }
+            .card-img-overlay {
+                top: auto;
+            }
+            .play-again-btn, .btn-primary {
+                border-radius: 10px;
+                padding: 10px 40px 10px 40px;
+                color: #000;
+                border: none !important;
+                background-color: #fff;
+                align-items: center!important;
+            }
+        }
+        .text-block {
+            border-radius: 20px;
+            padding: 15px;
+            font-size: 20px;
+            color:  #fff;
+            background-color: rgb(27, 181, 122);
+            align-items: center!important;
+        }
+        .choices-block {
+            display: contents;
+        }
+        .dialog-block {
+            opacity: 0.75;
+            border-radius: 10px;
+            padding: 10px;
+            color: #000;
+            cursor: pointer;
+            background-color: #fff;
+            
+        }
+    }
+    .play-btn, .btn-primary {
+        border-radius: 10px;
+        padding: 10px 40px 10px 40px;
+        color: #000;
+        border: none !important;
+        background-color: #fff;
+        align-items: center!important;
+    }
+    }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
