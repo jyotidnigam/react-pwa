@@ -4,6 +4,7 @@
     },
     "scenes": {
         "SDFLK": {
+            "sound": "1.mp3",
             "image": "pexels-photo-2267139.jpeg",
             "message": "Morbi vestibulum turpis a quam sollicitudin, eu lacinia enim blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
             "choices": [

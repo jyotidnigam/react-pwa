@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, Container, Row, Col, Image  } from 'react-bootstrap';
 import './index.scss';
 import demo from '../../utils/demo.json';
+import Music from '../common/audioPlayer.js';
 
 export const Home = () => {
   const [currentScene, setCurrentScene] = useState({}); 
   const [isStarted, setIsStarted] = useState(false);
   const [isEnded, setIsEnded] = useState(false);
-  useEffect(() => {
-    
-  });
+  
   const start = () => {
     setIsEnded(false);
     const rootScene = demo['config'].rootScene;
@@ -49,7 +48,13 @@ export const Home = () => {
             <Card className="bg-dark text-white">
             <Card.Img src={`/images/${currentScene.image}`}/>
               <Card.ImgOverlay>
-                {/* <Card.Title>{currentScene.message}</Card.Title> */}
+                <Row>
+                  <Col className="w-100">
+                  {
+                    currentScene.sound && <Music url={'/music/1.mp3'} />
+                  }
+                  </Col>
+                </Row>
                 <Row>
                   <Col xs={12} className="text-block mb-2">
                      <span>{currentScene.message}</span>
@@ -65,7 +70,7 @@ export const Home = () => {
                   }) :
                   <Row className="w-100">
                     <Col>
-                  <Button className="play-btn" onClick={playAgain}>Play Again</Button>
+                      <Button className="play-btn" onClick={playAgain}>Play Again</Button>
                   </Col>
                 </Row> 
                 }
