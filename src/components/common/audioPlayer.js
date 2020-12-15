@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from 'react';
 const Music = (props) => {
   const [play, setPlay] = useState(false);
@@ -21,7 +20,8 @@ const Music = (props) => {
 
     return (
       <div>
-          {!play ? <i class="fa fa-play" onClick={togglePlay}></i> : <i class="fa fa-pause" onClick={togglePlay}></i>}
+          {!play ? <i class="fa fa-play btn-cs" onClick={togglePlay}></i> 
+          : <i class="fa fa-pause btn-cs" onClick={togglePlay}></i>}
       </div>
     );
   

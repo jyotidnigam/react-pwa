@@ -20,6 +20,7 @@
         },
         "DSKJF": {
             "image": "bg1.jpg",
+            "video": "v1.mp4",
             "message": "Praesent hendrerit ullamcorper sapien quis mattis. Aliquam cursus risus eu scelerisque sollicitudin. Proin ac diam et dui pulvinar porttitor eu eget justo.",
             "choices": [
                 {

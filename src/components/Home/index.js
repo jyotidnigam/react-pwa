@@ -3,6 +3,7 @@ import { Button, Card, Container, Row, Col, Image  } from 'react-bootstrap';
 import './index.scss';
 import demo from '../../utils/demo.json';
 import Music from '../common/audioPlayer.js';
+import VideoPlayer from '../common/videoPlayer.js';
 
 export const Home = () => {
   const [currentScene, setCurrentScene] = useState({}); 
@@ -47,14 +48,17 @@ export const Home = () => {
           <Col xs={12} className="w-100">
             <Card className="bg-dark text-white">
             <Card.Img src={`/images/${currentScene.image}`}/>
-              <Card.ImgOverlay>
-                <Row>
-                  <Col className="w-100">
+            {/* <button class="btn-cs">Button</button> */}
+
                   {
                     currentScene.sound && <Music url={'/music/1.mp3'} />
                   }
-                  </Col>
-                </Row>
+                  {
+                    currentScene.video && <VideoPlayer url={'/video/v1.mp4'} />
+                  }
+
+              <Card.ImgOverlay>
+                
                 <Row>
                   <Col xs={12} className="text-block mb-2">
                      <span>{currentScene.message}</span>
