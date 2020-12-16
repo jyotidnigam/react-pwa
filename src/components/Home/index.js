@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,lazy, Suspense } from 'react';
 import { Button, Card, Container, Row, Col, Image  } from 'react-bootstrap';
 import './index.scss';
 import demo from '../../utils/demo.json';
-import Music from '../common/audioPlayer';
 import StartScreen from '../StartScreen'
-import VideoPlayer from '../common/videoPlayer';
+const VideoPlayer = lazy(() => import('../common/videoPlayer'));
+const Music = lazy(() => import('../common/audioPlayer'));
 
 export const Home = () => {
   const [currentScene, setCurrentScene] = useState({}); 
@@ -47,10 +47,14 @@ export const Home = () => {
             <Card className="bg-dark text-white" id="videoDiv">
                   { currentScene.image && !currentScene.video && <Card.Img src={`/images/${currentScene.image}`}/> }
                   {
-                    currentScene.sound && <Music url={`/music/${currentScene.sound}`} />
+                    currentScene.sound && <Suspense fallback={()=><div></div>}>
+                        <Music url={`/music/${currentScene.sound}`} />
+                      </Suspense>
                   }
                   {
-                    currentScene.video && <VideoPlayer url={`/video/${currentScene.video}`} repeat={currentScene.repeatVideo}/>
+                    currentScene.video && <Suspense fallback={()=><div></div>}>
+                     <VideoPlayer url={`/video/${currentScene.video}`} repeat={currentScene.repeatVideo}/>
+                    </Suspense>
                    }
               <Card.ImgOverlay>
                 <div id="videoMessage">
