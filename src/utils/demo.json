@@ -19,8 +19,9 @@
             ]
         },
         "DSKJF": {
-            "image": "bg1.jpg",
-            "video": "v1.mp4",
+            "image": "pexels-photo-2267139.jpeg",
+            "video": "3.mp4",
+            "repeatVideo": true,
             "message": "Praesent hendrerit ullamcorper sapien quis mattis. Aliquam cursus risus eu scelerisque sollicitudin. Proin ac diam et dui pulvinar porttitor eu eget justo.",
             "choices": [
                 {
@@ -35,7 +36,7 @@
         },
         "D2JJK": {
             "image": "img2.jpg",
-            "message": "Etiam et nibh sed dui fringilla bibendum ut in sem. Vestibulum sed pharetra leo. Pellentesque ornare dictum purus at imperdiet. Phasellus ornare interdum risus, eu tincidunt massa laoreet nec. In sed facilisis magna. Nullam ac libero vel turpis viverra hendrerit. Donec at lectus in leo tempus hendrerit.",
+            "message": "Etiam et nibh sed dui fringilla bibendum ut in sem. Vestibulum sed pharetra leo.",
             "choices": [
                 {
                     "text": "Nullam ac libero vel turpis viverra hendrerit",
@@ -49,7 +50,7 @@
         },
         "D2JJL": {
             "image": "img1.jpg",
-            "message": "Etiam et nibh sed dui fringilla bibendum ut in sem. Vestibulum sed pharetra leo. Pellentesque ornare dictum purus at imperdiet. Phasellus ornare interdum risus, eu tincidunt massa laoreet nec. In sed facilisis magna. Nullam ac libero vel turpis viverra hendrerit. Donec at lectus in leo tempus hendrerit.",
+            "message": "Etiam et nibh sed dui fringilla bibendum ut in sem. Vestibulum sed pharetra leo.",
             "choices": []
         }
     }
