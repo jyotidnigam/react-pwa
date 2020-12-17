@@ -1,3 +1,4 @@
+@import "node_modules/bootstrap/scss/bootstrap";
 .background-section {
     background-color: #202931;
     position: absolute;
@@ -5,82 +6,110 @@
     right: 0;
     bottom: 0;
     left: 0;
-    .content-wrapper {  
-        opacity: 1; 
-        transition: opacity 5s;
-        padding-right: 3vw;
-        padding-left: 3vw;
-        // margin: 0 auto;
-        top: 0;
-        bottom: 0;
-        box-sizing: content-box;
+    .container {
+        @include media-breakpoint-between(lg, xl){
+            width: 30%;
+        }
+        @include media-breakpoint-between(md, lg){
+            width: 40%;
+        }
+        @include media-breakpoint-between(xs, sm) {
+            width: 100%;
+        }
+        width: 30%;
+        padding: 0;
+        align-items: center;
         .card-img {
             -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
             -moz-animation: fadein 2s; /* Firefox < 16 */
             -ms-animation: fadein 2s; /* Internet Explorer */
             -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
-            height: 99.8vh;
-          
+            height: 99.7vh;
         }
         .card-img-overlay {
             top: auto;
         }
-        .container {
-            width: 30%;
-            align-items: center;
-        .game-dashboard{
-            height: 100vh;
-            .card-img {
-                height: 99.8vh;
-                -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-                -moz-animation: fadein 2s; /* Firefox < 16 */
-                -ms-animation: fadein 2s; /* Internet Explorer */
-                -o-animation: fadein 2s; /* Opera < 12.1 */
-                animation: fadein 2s;
-            }
-            .card-img-overlay {
-                top: auto;
-            }
-            .play-again-btn, .btn-primary {
-                border-radius: 10px;
-                padding: 10px 40px 10px 40px;
-                color: #000;
-                border: none !important;
-                background-color: #fff;
-                align-items: center!important;
-            }
+    .game-dashboard{
+        height: 100vh;
+        .card-img {
+            height: 99.7vh;
+            -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+            -moz-animation: fadein 2s; /* Firefox < 16 */
+            -ms-animation: fadein 2s; /* Internet Explorer */
+            -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
         }
-        .text-block {
-            border-radius: 20px;
-            padding: 15px;
-            font-size: 20px;
-            color:  #fff;
-            background-color: rgb(27, 181, 122);
+        .btn-cs {
+            position: absolute;
+            opacity: 0.7;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: #fff;
+            color: gray;
+            font-size: 16px;
+            padding: 22px 22px 22px 26px;
+            border: none;
+            cursor: pointer;
+            border-radius: 56px;
+            text-align: center;
+            z-index: 1;
+        }
+        #videoDiv {
+            width: 100%; 
+            height: auto; 
+            position: relative;
+        }
+        #video1 { 
+            margin: auto; 
+            display: block; 
+            border: none;
+            height: 99.7vh;
+        }
+        .card-img-overlay {
+            top: auto;
+        }
+        .play-again-btn, .btn-primary {
+            border-radius: 10px;
+            padding: 10px 40px 10px 40px;
+            color: #000;
+            border: none !important;
+            background-color: #fff;
             align-items: center!important;
         }
-        .choices-block {
-            display: contents;
-        }
-        .dialog-block {
-            opacity: 0.75;
-            border-radius: 10px;
-            padding: 10px;
-            color: #000;
-            cursor: pointer;
-            background-color: #fff;
-            
-        }
     }
-    .play-btn, .btn-primary {
+    .text-block {
+        border-radius: 20px;
+        padding: 15px;
+        font-size: 20px;
+        color:  #fff;
+        background-color: rgb(27, 181, 122);
+        align-items: center!important;
+    }
+    .choices-block {
+        display: contents;
+    }
+    .dialog-block {
+        opacity: 0.75;
+        border-radius: 10px;
+        padding: 10px;
+        color: #000;
+        cursor: pointer;
+        background-color: #fff;
+        
+    }
+  }
+  .play-btn, .btn-primary {
         border-radius: 10px;
         padding: 10px 40px 10px 40px;
         color: #000;
         border: none !important;
         background-color: #fff;
         align-items: center!important;
-    }
-    }
+        
+  }
 }
 
 @keyframes fadein {
