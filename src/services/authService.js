@@ -1,5 +1,5 @@
-import { Service } from './baseService';
+import { Service } from './index';
 
-export const loginService = (credentials) => {
-  return Service.post('/api/auth/login',credentials);
+export const loginService = (data) => {
+  return Service.post('/login', data);
 };
