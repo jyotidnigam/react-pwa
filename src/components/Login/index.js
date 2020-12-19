@@ -1,8 +1,14 @@
 import * as React from "react";
 import { Formik } from "formik";
 import { LoginPage as TablerLoginPage } from "tabler-react";
+import { useAuthState, useAuthDispatch } from '../../Context';
 
-const Login = () => {
+import { loginUser } from '../../Context/Actions/authActions';
+
+const Login = (props) => {
+  const { userDetails, errorMessage } = useAuthState();
+  const dispatch = useAuthDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -21,11 +27,15 @@ const Login = () => {
         }
         return errors;
       }}
-      onSubmit={(
+      onSubmit={ async (
         values,
         { setSubmitting, setErrors /* setValues and other goodies */ }
       ) => {
-        alert("Done!");
+        const res = await loginUser(dispatch, values);
+        if(!res.error){
+         props.history.push('/admin/')
+        }
+        else alert(res.error);
       }}
       render={({
         values,
