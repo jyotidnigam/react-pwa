@@ -22,7 +22,7 @@ const Header = () => {
         <AccountDropdown
           avatarURL="/images/profile-avatar.png"
           options={[
-            { icon: "user", value: `${userDetails.name && userDetails.name}`},
+            { icon: "user", value: `${userDetails && userDetails.name && userDetails.name}`},
             { icon: "settings", value: "Logout", to: "/login", onClick: () => logout(dispatch) },
           ]}
         />
