@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const local = process.env ? 'http://localhost:4000' : 'https://node-game-backend.herokuapp.com';
+// const local = 'http://localhost:4000'; 
+const local = 'https://node-game-backend.herokuapp.com';
 export const baseURL = local;
 const baseService  = axios.create({ baseURL  });
 export const Service = axios.create({ baseURL });
