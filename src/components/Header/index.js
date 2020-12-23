@@ -6,17 +6,18 @@ import 'tabler-react/dist/Tabler.css';
 
 import { logout } from '../../Context/Actions/authActions';
 import { useAuthDispatch, useAuthState } from '../../Context';
+
 const Header = () => {
 
   const dispatch = useAuthDispatch();
   const { userDetails } = useAuthState();
     return <Navbar  bg="dark" variant="dark" expand="lg" className="p-4">
-    <Navbar.Brand href="#home" className="mr-auto">
-      <Image src="/images/logo.png" width="200"/>
-    </Navbar.Brand>
-      <Nav className="text-right">
-        <Link to="/admin/games" className="nav-link">Games</Link>
+    <div className="navbar-brand mr-lg-auto mr-md-0">
+      <Link to="/admin"><Image src="/images/logo.png"/></Link>
+      </div>
+      <Nav className="text-right d-flex">
         <Link to="/admin/builder" className="nav-link">Builder</Link>
+        <Link to="/admin/games" className="nav-link">Games</Link>
       </Nav>
       <Nav>
         <AccountDropdown
