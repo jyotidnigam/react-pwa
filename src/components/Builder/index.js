@@ -35,10 +35,10 @@ const Builder = (props) => {
         await gameUploadService(data);
     }
 
-    return <div>
+    return <div className="mt-5">
        <Container>
            <Card>
-               <Card.Body>
+               <Card.Body className="text-md-center">
                <Form.Group className="row">
                   <Form.Label className="col-sm-4 col-lg-3">
                       Game Name:
@@ -66,8 +66,11 @@ const Builder = (props) => {
                     />
                   </Col>
                 </Form.Group>
-               <Form.Group className="row">
+               <Form.Group className="row text-left">
+                   <Col sm={4} lg={3}></Col>
+                   <Col sm={8} lg={9}> 
                    <Button onClick={onUploadHandler}>Upload</Button>
+                   </Col>
                </Form.Group>
                </Card.Body>
            </Card>
