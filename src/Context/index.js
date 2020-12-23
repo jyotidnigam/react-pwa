@@ -3,6 +3,7 @@ import { initialState, AuthReducer } from './Reducers/authReducer';
  
 const AuthStateContext = React.createContext();
 const AuthDispatchContext = React.createContext();
+export const GameStateContext = React.createContext();
 
 export function useAuthState() {
     const context = React.useContext(AuthStateContext);
@@ -11,7 +12,16 @@ export function useAuthState() {
     }
    
     return context;
+}
+
+export function useGameState() {
+  const context = React.useContext(GameStateContext);
+  if (context === undefined) {
+    throw new Error("useGameState must be used within a AuthProvider");
   }
+  
+  return context;
+}
 
 
   export function useAuthDispatch() {
@@ -26,7 +36,6 @@ export function useAuthState() {
 
   export const AuthProvider = ({ children }) => {
     const [user, dispatch] = useReducer(AuthReducer, initialState);
-  
     return (
       <AuthStateContext.Provider value={user}>
         <AuthDispatchContext.Provider value={dispatch}>

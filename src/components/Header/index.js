@@ -15,9 +15,9 @@ const Header = () => {
       <Image src="/images/logo.png" width="200"/>
     </Navbar.Brand>
       <Nav className="text-right">
+        <Link to="/admin/games" className="nav-link">Games</Link>
         <Link to="/admin/builder" className="nav-link">Builder</Link>
-        <Link to="/game-demo" className="nav-link">Demo</Link>
-       </Nav>
+      </Nav>
       <Nav>
         <AccountDropdown
           avatarURL="/images/profile-avatar.png"
