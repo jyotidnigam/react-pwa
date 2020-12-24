@@ -20,7 +20,6 @@ export const Home = () => {
   const [ gameDetails, setGameDetails] = useState({});
 
   useEffect(async()=>{
-    
     document.addEventListener('contextmenu', (e) => {
       e.preventDefault();
     });

@@ -13,7 +13,6 @@ const Builder = (props) => {
 
     const handleFileUpload = (event) => {
         console.log(event.target.files[0])
-        debugger
         let file = event.target.files[0];
         if (['application/json', 'json'].includes(file.type))  {
             setSelectedFile(event.target.files[0])

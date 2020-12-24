@@ -15,5 +15,20 @@
    
   }
 }
+.loading-modal {
+  .modal-dialog {
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+  }
+}
+  .modal-backdrop {
+    background-color: rgba(0,0,0,.0001) !important;
+}
+}
 
 
