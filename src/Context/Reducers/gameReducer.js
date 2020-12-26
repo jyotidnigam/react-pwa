@@ -18,6 +18,7 @@ export const GamesReducer = (gameInitialState, action) => {
         games: action.payload,
         loading: false
       };
+      
     case "GAMES_ERROR":
       return {
         ...gameInitialState,
@@ -42,7 +43,25 @@ export const GamesReducer = (gameInitialState, action) => {
           loading: false,
           errorMessage: action.error
         }; 
-      
+
+    case "CREATE_GAME_REQUEST":
+      return {
+        ...gameInitialState,
+        loading: true
+      };
+    case "CREATE_GAME_SUCCESS":
+      return {
+        ...gameInitialState,
+        game: action.payload,
+        loading: false
+      };
+    case "CREATE_GAME_ERROR":
+      return {
+        ...gameInitialState,
+        loading: false,
+        errorMessage: action.error
+      }; 
+          
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

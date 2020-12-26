@@ -17,25 +17,31 @@ export const Home = () => {
   const { pathname } = useLocation();
   const gameId = pathname.split('/')[2]
   const { games : { games, game } = {}, gamesDispatch } = useGameState();
-  const [ gameDetails, setGameDetails] = useState({});
+  const [ gameDetails, setGameDetails] = useState();
 
   useEffect(async()=>{
-    document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-    });
-    const detail = games.length ? games.find((g) => g._id === gameId) : ''
-    if(!detail){
-      const res = await getGameById(gamesDispatch, gameId);
-      if(res){
-        if(Object.keys(game).length)
-          setGameDetails(JSON.parse(res.gameJson))
-      }else alert(res.error);
-    }
-    else
-      setGameDetails(JSON.parse(detail.gameJson))
-  }, [gameId, games, game])
+    // document.addEventListener('contextmenu', (e) => {
+    //   e.preventDefault();
+    // });
+    const res = await getGameById(gamesDispatch, gameId);
+    debugger
+    setGameDetails(JSON.parse(res.gameJson || ''))
+    
+    gameDetails && start();
+    // const detail = games.length ? games.find((g) => g.gameSlug === gameId) : ''
+    // if(!detail){
+    //   const res = await getGameById(gamesDispatch, gameId);
+    //   if(res){
+    //     // if(Object.keys(game).length)
+    //       setGameDetails(JSON.parse(res.gameJson))
+    //   }else alert(res.error);
+    // }ss  
+    // else
+    //   setGameDetails(JSON.parse(detail.gameJson))
+  }, [game])
 
   const start = () => {
+    debugger
     setIsEnded(false);
     const rootScene = gameDetails['config'].rootScene;
     const scene = gameDetails.scenes[rootScene]
@@ -64,15 +70,15 @@ export const Home = () => {
           <Col xs={12} className="w-100">
           <div>
             <Card className="bg-dark text-white" id="videoDiv">
-                  { currentScene.image && !currentScene.video && <Card.Img src={currentScene.image}/> }
+                  { currentScene.image && !currentScene.video && <Card.Img src={'/images/'+currentScene.image}/> }
                   {
                     currentScene.sound && <Suspense fallback={()=><div></div>}>
-                        <Music url={currentScene.sound} />
+                        <Music url={'/music/'+currentScene.sound} />
                       </Suspense>
                   }
                   {
                     currentScene.video && <Suspense fallback={()=><div></div>}>
-                     <VideoPlayer url={currentScene.video} repeat={currentScene.repeatVideo}/>
+                     <VideoPlayer url={'/video/'+currentScene.video} repeat={currentScene.repeatVideo}/>
                     </Suspense>
                    }
               <Card.ImgOverlay>
@@ -108,5 +114,6 @@ export const Home = () => {
     </div>
   );
 }
+
 
 export default Home;

@@ -24,7 +24,7 @@ const Header = () => {
           avatarURL="/images/profile-avatar.png"
           options={[
             { icon: "user", value: `${userDetails && userDetails.name && userDetails.name}`},
-            { icon: "settings", value: "Logout", to: "/login", onClick: () => logout(dispatch) },
+            { icon: "settings", value: "Logout", to: "/", onClick: () => logout(dispatch) },
           ]}
         />
       </Nav>

@@ -12,9 +12,9 @@ const Music = (props) => {
   
   return (
     <div>
-       {!play ? <i class="fa fa-play btn-cs" onClick={togglePlay}></i>
-         : <i class="fa fa-pause btn-cs" onClick={togglePlay}></i>}
-        <audio id="player">
+       {/* {!play ? <i class="fa fa-play btn-cs" onClick={togglePlay}></i>
+         : <i class="fa fa-pause btn-cs" onClick={togglePlay}></i>} */}
+        <audio id="player" autoPlay>
           <source src={props.url} type="audio/ogg"/>
           <source src={props.url} type="audio/mpeg"/>
         Your browser does not support the audio element.

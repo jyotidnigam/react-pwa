@@ -54,7 +54,7 @@ const GameTable = (props) => {
                     <Table.Col>{game.gameName}</Table.Col>
                     <Table.Col>{game.gameSlug}</Table.Col>
                     <Table.Col>
-                      <Button type="submit" color="warning" className="ml-auto" onClick={()=>goToPreview(game._id)}>
+                      <Button type="submit" color="warning" className="ml-auto" onClick={()=>goToPreview(game.gameSlug)}>
                         Preview
                       </Button>
                     </Table.Col>

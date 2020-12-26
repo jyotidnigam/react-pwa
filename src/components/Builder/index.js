@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card, Container, Form, Col, Button } from 'react-bootstrap';
+import { Card, Container, Form, Col, Button, Modal, Spinner } from 'react-bootstrap';
 
-import { useAuthDispatch, useAuthState } from '../../Context';
-import { gameUploadService } from '../../services/gameService';
+import { useAuthDispatch, useAuthState, useGameState } from '../../Context';
+import { createGame } from '../../Context/Actions/gameActions';
 
 
 const Builder = (props) => {
@@ -10,6 +10,7 @@ const Builder = (props) => {
     const [ selectedFile, setSelectedFile] = useState(null);
     const [ gameName, setGameName] = useState('');
     const { userDetails } = useAuthState();
+    const { gamesDispatch, games : { loading, errorMessage }} = useGameState();
 
     const handleFileUpload = (event) => {
         console.log(event.target.files[0])
@@ -28,10 +29,12 @@ const Builder = (props) => {
 
     const onUploadHandler = async() => {
         const data = new FormData() 
+
         data.append('file', selectedFile);
         data.append('user', userDetails._id )
         data.append('gameName', gameName )
-        await gameUploadService(data);
+        await createGame(gamesDispatch, data);
+        props.history.push('/admin/games')
     }
 
     return <div className="mt-5">
@@ -73,7 +76,11 @@ const Builder = (props) => {
                </Form.Group>
                </Card.Body>
            </Card>
+           {errorMessage && errorMessage}
        </Container>
+       {loading ? <Modal show={true} className="loading-modal text-center">
+        <Spinner animation="border" variant="primary" />
+      </Modal> : ""}
     </div>
 
 }
