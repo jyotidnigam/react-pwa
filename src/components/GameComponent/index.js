@@ -1,10 +1,8 @@
 import React, { useState, useEffect,lazy, Suspense } from 'react';
-import { Button, Card, Container, Row, Col, Image  } from 'react-bootstrap';
+import { Card, Container, Row, Col, Image  } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import './index.scss';
 import { useGameState } from '../../Context';
-import { gameInitialState } from '../../Context/Reducers/gameReducer';
-import StartScreen from '../StartScreen'
 import { getGameById } from '../../Context/Actions/gameActions';
 
 const VideoPlayer = lazy(() => import('../common/videoPlayer'));
@@ -35,7 +33,6 @@ export const Home = () => {
     const rootScene = gameDetails['config'].rootScene;
     const scene = gameDetails.scenes[rootScene]
     setCurrentScene(scene);
-    setIsStarted(true);
   }
 
   const choiceSelection = (followupScene) => { 
@@ -50,7 +47,7 @@ export const Home = () => {
      
     <Container>
       {
-        isStarted && !isEnded &&  <Row className="game-dashboard">
+        <Row className="game-dashboard">
           <Col xs={12} className="w-100">
           <div>
             <Card className="bg-dark text-white" id="videoDiv" 
