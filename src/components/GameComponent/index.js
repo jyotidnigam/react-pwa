@@ -22,6 +22,7 @@ export const Home = () => {
       e.preventDefault();
     });
     if(!gameDetails){
+      debugger
     const res = await getGameById(gamesDispatch, gameId);
     setGameDetails(JSON.parse(res.gameJson || ''))
     }    
@@ -32,14 +33,26 @@ export const Home = () => {
     setIsEnded(false);
     const rootScene = gameDetails['config'].rootScene;
     const scene = gameDetails.scenes[rootScene]
+    debugger
     setCurrentScene(scene);
   }
 
   const choiceSelection = (followupScene) => { 
-    if(currentScene.movie){
-      document.getElementById("video1") && document.getElementById("video1").remove();
-    }
+
     const scene = gameDetails.scenes[followupScene]
+    {
+      let video = document.getElementById("video1");
+      video && video.setAttribute('src', '/media/' + scene.movie)
+      video && video.load();
+    }
+    if (scene.music && (scene.music !== currentScene.music || !currentScene.music)) {
+      let music = document.getElementById("player");
+      music && music.setAttribute('src', '/media/' + scene.music)
+      if (music) {
+        music.load();
+        music.play();
+      }
+    }
     setCurrentScene(scene);
   }
   return (
@@ -52,21 +65,22 @@ export const Home = () => {
           <div>
             <Card className="bg-dark text-white" id="videoDiv" 
             style={{  
-              backgroundImage: "url(" + "/images/"+currentScene.image + ")",
+              backgroundImage: "url(" + "/media/"+currentScene.image + ")",
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat'
             }} >
                   {
-                    currentScene.movie && <Suspense fallback={() => <div></div>}>
-                      <VideoPlayer url={'/video/' + currentScene.movie} repeat={currentScene.repeatVideo} />
+                    currentScene.movie && <Suspense fallback={<div/>}>
+                      <VideoPlayer url={'/media/' + currentScene.movie} 
+                      repeat={currentScene.moviePlaybackOption === 'repeat' ? true: false} />
                     </Suspense>
                   }
-                  {
-                    currentScene.sound && <Suspense fallback={() => <div></div>}>
-                      <Music url={'/music/' + currentScene.sound} />
-                    </Suspense>
-                  }
+                  
+                  <Suspense fallback={<div/>}>
+                      <Music />
+                  </Suspense>
+                  
               <Card.ImgOverlay>
                 <div id="videoMessage">
                   <Row>

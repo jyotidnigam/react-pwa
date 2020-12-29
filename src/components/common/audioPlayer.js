@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from 'react';
-const Music = (props) => {
-  const [play, setPlay] = useState(false);
+import React from 'react';
+const Music = () => {
 
-  const togglePlay = () => {
-    setPlay(!play);
-    if(!play)
-      document.getElementById('player').play()
-    else 
-      document.getElementById('player').pause()  
-  }
-  
   return (
     <div>
-       {/* {!play ? <i class="fa fa-play btn-cs" onClick={togglePlay}></i>
-         : <i class="fa fa-pause btn-cs" onClick={togglePlay}></i>} */}
         <audio id="player" autoPlay>
-          <source src={props.url} type="audio/ogg"/>
-          <source src={props.url} type="audio/mpeg"/>
+          <source type="audio/mp3"/>
         Your browser does not support the audio element.
         </audio>
 
