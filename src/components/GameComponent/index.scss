@@ -120,6 +120,19 @@
         align-items: center!important;
         
   }
+  .icons{
+    padding: 5px;
+    align-items: center;
+    .img-icon {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+  }
+  .disabled{
+      opacity: 0.4;
+      pointer-events: none;
+  }
 }
 
 @keyframes fadein {

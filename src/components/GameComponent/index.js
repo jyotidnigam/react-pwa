@@ -16,13 +16,13 @@ export const Home = () => {
   const gameId = pathname.split('/')[2]
   const { games : { games, game } = {}, gamesDispatch } = useGameState();
   const [ gameDetails, setGameDetails] = useState(null);
-
+  const [ isDisabled, setIsDisabled] = useState(true);
+  const [toggle, setToggle] = useState(false); 
   useEffect(async()=>{
     document.addEventListener('contextmenu', (e) => {
       e.preventDefault();
     });
     if(!gameDetails){
-      debugger
     const res = await getGameById(gamesDispatch, gameId);
     setGameDetails(JSON.parse(res.gameJson || ''))
     }    
@@ -33,12 +33,11 @@ export const Home = () => {
     setIsEnded(false);
     const rootScene = gameDetails['config'].rootScene;
     const scene = gameDetails.scenes[rootScene]
-    debugger
     setCurrentScene(scene);
   }
 
   const choiceSelection = (followupScene) => { 
-
+    let music = document.getElementById("player");
     const scene = gameDetails.scenes[followupScene]
     {
       let video = document.getElementById("video1");
@@ -46,33 +45,62 @@ export const Home = () => {
       video && video.load();
     }
     if (scene.music && (scene.music !== currentScene.music || !currentScene.music)) {
-      let music = document.getElementById("player");
       music && music.setAttribute('src', '/media/' + scene.music)
       if (music) {
         music.load();
         music.play();
       }
     }
+    if(scene.sound){
+        let sound = document.getElementById("sound");
+        setIsDisabled(true);
+        sound && sound.setAttribute('src', '/media/'+ scene.sound)
+        if(sound) { sound.load(); sound.play();}
+    }
     setCurrentScene(scene);
   }
+
+  const handleSoundPlay = () => {
+    let sound = document.getElementById("sound");
+    if(sound) { 
+      sound.load();
+       sound.play();
+       setIsDisabled(true);
+      }
+
+  }
+
   return (
     <div className="background-section">
-     
     <Container>
       {
         <Row className="game-dashboard">
           <Col xs={12} className="w-100">
-          <div>
+              <div>
             <Card className="bg-dark text-white" id="videoDiv" 
             style={{  
-              backgroundImage: "url(" + "/media/"+currentScene.image + ")",
+              backgroundImage: toggle ?'none' :"url(" + "/media/"+currentScene.image + ")",
               backgroundPosition: 'center',
               backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
+              backgroundRepeat: 'no-repeat',
             }} >
+              <div className="d-flex flex-row justify-content-end p-3">
+              <img src="/media/ST_UI_HideUI.png"
+                    onClick={() => setToggle(!toggle)}
+                    className="img-icon mr-2"
+                    height="40px"
+                    width="40px" />
+                  <img src="/media/ST_UI_Replay.png"
+                    className="img-icon ml-2"
+                    height="40px"
+                    width="40px"
+                    className={isDisabled? 'disabled': ''}
+                    onClick={handleSoundPlay} />
+                   </div> 
                   {
                     currentScene.movie && <Suspense fallback={<div/>}>
                       <VideoPlayer url={'/media/' + currentScene.movie} 
+                      toggle={toggle}
                       repeat={currentScene.moviePlaybackOption === 'repeat' ? true: false} />
                     </Suspense>
                   }
@@ -80,8 +108,13 @@ export const Home = () => {
                   <Suspense fallback={<div/>}>
                       <Music />
                   </Suspense>
-                  
-              <Card.ImgOverlay>
+                  <audio id="sound" autoPlay onEnded={() =>  setIsDisabled(false)}>
+                    <source type="audio/mp3" />
+                  </audio>
+
+              <Card.ImgOverlay style={{
+                display: toggle ? 'none': 'block'
+              }}>
                 <div id="videoMessage">
                   <Row>
                     <Col xs={12} className="text-block mb-2">
