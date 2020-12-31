@@ -22,7 +22,7 @@ export default () => {
         <Route path="/admin/:path?" exact>
             <BaseLayout>
                 <AuthRoute path="/admin/" exact component={Dashboard} />
-                <AuthRoute path="/admin/builder" exact component={Builder} />
+                {/* <AuthRoute path="/admin/builder" exact component={Builder} /> */}
                 <AuthRoute path="/admin/games" exact component={GameTable} />
             </BaseLayout>
         </Route>

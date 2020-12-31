@@ -1,5 +1,5 @@
 // App.js
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
@@ -8,7 +8,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Spinner } from 'react-bootstrap';
 import { useAuthDispatch, useGameState, useAuthState } from '../../Context';
-import { getGamesByUser, fetchAllGames } from '../../Context/Actions/gameActions';
+import { getGamesByUser, fetchAllGames, deleteGame } from '../../Context/Actions/gameActions';
 import {
 Page,
 Grid,
@@ -16,11 +16,14 @@ Card,
 Table,
 Button
 } from "tabler-react";
+import Builder from '../Builder';
 
 function GameTable(props) {
 
   const { games : {games = [], loading} , gamesDispatch } = useGameState();
   const { userDetails } = useAuthState();
+  const [show, setShow] = useState(false);
+
   useEffect(async ()=>{
     let res
 
@@ -32,6 +35,9 @@ function GameTable(props) {
     if(res.error) alert(res.error);
   }, []);
 
+  const toggleModal = () => {
+    setShow(!show)
+  }
   const columns = [
     { dataField: '_id', text: 'NO', formatter: numberFormatter },
     { dataField: 'gameName', text: 'GAME NAME', sort: true },
@@ -69,7 +75,10 @@ function GameTable(props) {
 
   function actionsFormatter (cell, row, rowIndex, formatExtraData) { 
     return ( 
+      <div>
         <Button color="warning" className="ml-auto" onClick={()=>goToPreview(row.gameSlug)}>Preview</Button>
+        <Button color="danger" className="ml-auto" onClick={()=>deleteGame(gamesDispatch,row.gameSlug)}>Delete</Button>
+        </div>
         ); 
   } 
 
@@ -81,8 +90,12 @@ function GameTable(props) {
      props.history.push(`/game-demo/${id}`)
   }
 
+
   return (                                                                                                                                                                                                                                                                                                                                                          
     <Page.Content title="My Games">
+      <Button color="primary" onClick={toggleModal}>
+        Add Game
+      </Button>
       <Grid.Row cards={true}>
         <Grid.Col width={12}>
             {loading ? <div className="text-center mt-5 mb-5"><Spinner animation="border" role="status">
@@ -99,6 +112,7 @@ function GameTable(props) {
             }
         </Grid.Col>
       </Grid.Row>
+      <Builder show={show} toggleModal={toggleModal} history={props.history}/>
     </Page.Content>
     
   );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

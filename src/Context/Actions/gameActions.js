@@ -1,4 +1,5 @@
-import { gamesByUserService , gameById, gameUploadService, fetchAllGameService} from '../../services/gamesService';
+import { gamesByUserService , gameById, gameUploadService, fetchAllGameService,
+deleteGameService} from '../../services/gamesService';
  
 export async function getGamesByUser(dispatch, userId) {
   try {
@@ -65,6 +66,24 @@ export async function createGame(dispatch, data) {
     return {error: response.data.error};
   } catch (error) {
     dispatch({ type: 'CREATE_GAME_ERROR', error: error });    
+    return {error: error.response.data.error};
+  }
+}
+
+export async function deleteGame(dispatch, data) {
+  
+  try {
+    dispatch({ type: 'DELETE_GAME_REQUEST' });
+    let response = await deleteGameService(data)
+ 
+    if (response.data) {
+      dispatch({ type: 'DELETE_GAME_SUCCESS', payload: data });
+      return response.data;
+    }
+    dispatch({ type: 'DELETE_GAME_ERROR', error: response.data.error });
+    return {error: response.data.error};
+  } catch (error) {
+    dispatch({ type: 'DELETE_GAME_ERROR', error: error });    
     return {error: error.response.data.error};
   }
 }

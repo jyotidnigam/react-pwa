@@ -16,7 +16,7 @@ const Header = () => {
       <Link to="/admin"><Image src="/media/logo.png"/></Link>
       </div>
       <Nav className="text-right d-flex">
-        <Link to="/admin/builder" className="nav-link">Builder</Link>
+        {/* <Link to="/admin/builder" className="nav-link">Builder</Link> */}
         <Link to="/admin/games" className="nav-link">Games</Link>
       </Nav>
       <Nav>

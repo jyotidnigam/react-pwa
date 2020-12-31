@@ -18,4 +18,8 @@ export const gameUploadService = (data) => {
   });
 };
 
+export const deleteGameService = (data) => {
+  return Service.post('/delete/game', data);
+};
+
 
