@@ -68,11 +68,9 @@ export const GamesReducer = (gameInitialState, action) => {
         loading: true
       };
     case "DELETE_GAME_SUCCESS":
-      
-      const index = gameInitialState.games.findIndex((game,i)=> game.gameSlug === action.payload)
-      gameInitialState.games.splice(index, 1)
       return {
         ...gameInitialState,
+        games: gameInitialState.games.filter((a) => a.gameSlug !== action.payload),
         loading: false
       };
     case "DELETE_GAME_ERROR":

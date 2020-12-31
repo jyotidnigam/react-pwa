@@ -17,6 +17,9 @@ Table,
 Button
 } from "tabler-react";
 import Builder from '../Builder';
+import Swal from 'sweetalert2/dist/sweetalert2'
+
+import 'sweetalert2/src/sweetalert2.scss'
 
 function GameTable(props) {
 
@@ -38,6 +41,35 @@ function GameTable(props) {
   const toggleModal = () => {
     setShow(!show)
   }
+
+  const deleteRecord = (id) => {
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete the game!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        deleteGame(gamesDispatch, id)
+        Swal.fire(
+          'Deleted!',
+          'Your game has been deleted.',
+          'success'
+        )
+      
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your game is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+
   const columns = [
     { dataField: '_id', text: 'NO', formatter: numberFormatter },
     { dataField: 'gameName', text: 'GAME NAME', sort: true },
@@ -77,7 +109,7 @@ function GameTable(props) {
     return ( 
       <div>
         <Button color="warning" className="ml-auto" onClick={()=>goToPreview(row.gameSlug)}>Preview</Button>
-        <Button color="danger" className="ml-auto" onClick={()=>deleteGame(gamesDispatch,row.gameSlug)}>Delete</Button>
+        <Button color="danger" className="ml-auto" onClick={()=>deleteRecord(row.gameSlug)}>Delete</Button>
         </div>
         ); 
   } 
