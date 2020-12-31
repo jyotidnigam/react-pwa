@@ -26,7 +26,7 @@ function GameTable(props) {
   const { games : {games = [], loading} , gamesDispatch } = useGameState();
   const { userDetails } = useAuthState();
   const [show, setShow] = useState(false);
-
+  const [editData, setEditData] = useState({});
   useEffect(async ()=>{
     let res
 
@@ -40,6 +40,9 @@ function GameTable(props) {
 
   const toggleModal = () => {
     setShow(!show)
+    if(!show){
+      setEditData({})
+    }
   }
 
   const deleteRecord = (id) => {
@@ -68,6 +71,15 @@ function GameTable(props) {
         )
       }
     })
+  }
+
+  const resetEditData = () => {
+    setEditData({});
+  }
+
+  const editGame = (row) => {
+    setEditData(row);
+    toggleModal();
   }
 
   const columns = [
@@ -110,7 +122,8 @@ function GameTable(props) {
       <div>
         <Button color="warning" className="ml-auto" onClick={()=>goToPreview(row.gameSlug)}>Preview</Button>
         <Button color="danger" className="ml-auto" onClick={()=>deleteRecord(row.gameSlug)}>Delete</Button>
-        </div>
+        <Button color="danger" className="ml-auto" onClick={()=>editGame(row)}>Upload</Button>
+                </div>
         ); 
   } 
 
@@ -144,7 +157,11 @@ function GameTable(props) {
             }
         </Grid.Col>
       </Grid.Row>
-      <Builder show={show} toggleModal={toggleModal} history={props.history}/>
+      <Builder show={show}
+                toggleModal={toggleModal}
+                editData={editData} 
+                resetEditData={resetEditData}
+                history={props.history}/>
     </Page.Content>
     
   );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

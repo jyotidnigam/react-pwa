@@ -18,6 +18,12 @@ export const gameUploadService = (data) => {
   });
 };
 
+export const updateGame = (data) => {
+  return Service.post('/update/game', data, {
+    headers: {'Content-Type': 'multipart/form-data' }
+  });
+};
+
 export const deleteGameService = (data) => {
   return Service.post('/delete/game', {id: data});
 };

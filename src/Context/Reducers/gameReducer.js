@@ -79,6 +79,26 @@ export const GamesReducer = (gameInitialState, action) => {
         loading: false,
         errorMessage: action.error
       };
+
+    case "UPDATE_GAME_REQUEST":
+      return {
+        ...gameInitialState,
+        loading: true
+      };
+    case "UPDATE_GAME_SUCCESS":
+      const i = gameInitialState.games.findIndex((g)=>g.gameSlug === action.payload.gameSlug)
+      gameInitialState.games.splice(i, 1, action.payload);
+      return {
+        ...gameInitialState,
+        games: gameInitialState.games,
+        loading: false
+      };
+    case "UPADATE_GAME_ERROR":
+      return {
+        ...gameInitialState,
+        loading: false,
+        errorMessage: action.error
+      };
           
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

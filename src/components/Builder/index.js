@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Container, Form, Col, Button, Modal, Spinner } from 'react-bootstrap';
 
 import { useAuthDispatch, useAuthState, useGameState } from '../../Context';
-import { createGame } from '../../Context/Actions/gameActions';
+import { createGame, updateGame } from '../../Context/Actions/gameActions';
 
 const Builder = (props) => {
 
@@ -10,7 +10,15 @@ const Builder = (props) => {
     const [ gameName, setGameName] = useState('');
     const { userDetails } = useAuthState();
     const { gamesDispatch, games : { loading, errorMessage }} = useGameState();
-    const { toggleModal, show=false} = props;
+    const { toggleModal, show=false, editData={}, resetEditData} = props;
+    
+    useEffect(()=>{
+      if(editData && editData.gameName){
+        setGameName(editData.gameName)
+      }
+
+    })
+
     const handleFileUpload = (event) => {
         console.log(event.target.files[0])
         let file = event.target.files[0];
@@ -32,11 +40,16 @@ const Builder = (props) => {
         data.append('file', selectedFile);
         data.append('user', userDetails._id )
         data.append('gameName', gameName )
-        await createGame(gamesDispatch, data);
-        
+        if(editData){
+          await updateGame(gamesDispatch, data);
+        } else {
+          await createGame(gamesDispatch, data);
+        }
+       
         // REET MODAL DATA
         setGameName('');
         setSelectedFile(null);
+        resetEditData();
         toggleModal();
         props.history.push('/admin/games')
     }
@@ -44,16 +57,17 @@ const Builder = (props) => {
     return( 
     <Modal show={show} onHide={toggleModal}>
         <Modal.Header>
-          <Modal.Title>Add Game</Modal.Title>
+          <Modal.Title>{editData? 'Edit' : 'Add'} Game</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
             <Form.Group className="row">
                 <Form.Label className="col-sm-4 col-lg-3">
                     Game Name:
-                    </Form.Label>
+                </Form.Label>
                 <Col sm={8} lg={9}>
                   <Form.Control
+                    readOnly={editData ? true : false}
                     type="text"
                     name="file"
                     required
@@ -75,13 +89,7 @@ const Builder = (props) => {
                   />
                 </Col>
               </Form.Group>
-            <Form.Group className="row text-left">
-                    <Col sm={4} lg={3}></Col>
-                    <Col sm={8} lg={9}> 
-                    {/* <Button onClick={onUploadHandler}>Upload</Button> */}
-                    </Col>
-                </Form.Group>
-              
+                         
             {errorMessage && errorMessage}
         </Container>
           {loading ? <Modal show={true} className="loading-modal text-center">
