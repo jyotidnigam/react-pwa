@@ -97,7 +97,7 @@ const Builder = (props) => {
           </Modal> : ""}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
+          <Button variant="secondary" onClick={ () => { setEditData(''); toggleModal();}}>
             Close
           </Button>
           <Button onClick={onUploadHandler}>Upload</Button>

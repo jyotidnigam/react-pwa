@@ -117,7 +117,7 @@ function GameTable(props) {
       <div>
         <i class="far fa-eye ml-2 fa-2x primary pointer" onClick={()=>goToPreview(row.gameSlug)}/>
         <i class="fas fa-arrow-circle-up ml-2 fa-2x secondary pointer" onClick={()=>editGame(row)}/>
-        <i class="fas fa-times-circle ml-2 fa-2x danger pointer" onClick={()=>deleteRecord(gamesDispatch,row.gameSlug)}/>
+        <i class="fas fa-times-circle ml-2 fa-2x danger pointer" onClick={()=>deleteRecord(row.gameSlug)}/>
      
         </div>
         ); 
