@@ -18,7 +18,7 @@ export const gameUploadService = (data) => {
   });
 };
 
-export const updateGame = (data) => {
+export const updateGameService = (data) => {
   return Service.post('/update/game', data, {
     headers: {'Content-Type': 'multipart/form-data' }
   });

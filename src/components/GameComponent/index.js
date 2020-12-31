@@ -67,7 +67,6 @@ export const Home = () => {
        sound.play();
        setIsDisabled(true);
       }
-
   }
 
   return (
@@ -79,12 +78,12 @@ export const Home = () => {
               <div>
             <Card className="bg-dark text-white" id="videoDiv" 
             style={{  
-              backgroundImage: toggle ?'none' :"url(" + "/media/"+currentScene.image + ")",
+              backgroundImage: "url(" + "/media/"+currentScene.image + ")",
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
             }} >
-              <div className="d-flex flex-row justify-content-end p-3">
+              <div className="button-play w-100 position-absolute d-flex flex-row justify-content-end p-3">
               <img src="/media/ST_UI_HideUI.png"
                     onClick={() => setToggle(!toggle)}
                     className="img-icon mr-2"
@@ -100,7 +99,6 @@ export const Home = () => {
                   {
                     currentScene.movie && <Suspense fallback={<div/>}>
                       <VideoPlayer url={'/media/' + currentScene.movie} 
-                      toggle={toggle}
                       repeat={currentScene.moviePlaybackOption === 'repeat' ? true: false} />
                     </Suspense>
                   }

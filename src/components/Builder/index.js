@@ -10,14 +10,13 @@ const Builder = (props) => {
     const [ gameName, setGameName] = useState('');
     const { userDetails } = useAuthState();
     const { gamesDispatch, games : { loading, errorMessage }} = useGameState();
-    const { toggleModal, show=false, editData={}, resetEditData} = props;
+    const { toggleModal, show=false, editData={}, resetEditData, setEditData } = props;
     
     useEffect(()=>{
       if(editData && editData.gameName){
         setGameName(editData.gameName)
       }
-
-    })
+    }, [])
 
     const handleFileUpload = (event) => {
         console.log(event.target.files[0])
@@ -35,27 +34,29 @@ const Builder = (props) => {
     }
 
     const onUploadHandler = async() => {
-        const data = new FormData() 
+      if(!selectedFile || !gameName) alert('please select a json and provide a game name');
+       else { const data = new FormData() 
 
         data.append('file', selectedFile);
-        data.append('user', userDetails._id )
+        data.append('user', userDetails._id );
         data.append('gameName', gameName )
         if(editData){
+          data.append('id', editData._id);
           await updateGame(gamesDispatch, data);
         } else {
           await createGame(gamesDispatch, data);
         }
-       
+        setEditData('');
         // REET MODAL DATA
         setGameName('');
         setSelectedFile(null);
-        resetEditData();
         toggleModal();
         props.history.push('/admin/games')
+       }
     }
 
     return( 
-    <Modal show={show} onHide={toggleModal}>
+    <Modal show={true} onHide={toggleModal}>
         <Modal.Header>
           <Modal.Title>{editData? 'Edit' : 'Add'} Game</Modal.Title>
         </Modal.Header>
@@ -67,7 +68,6 @@ const Builder = (props) => {
                 </Form.Label>
                 <Col sm={8} lg={9}>
                   <Form.Control
-                    readOnly={editData ? true : false}
                     type="text"
                     name="file"
                     required

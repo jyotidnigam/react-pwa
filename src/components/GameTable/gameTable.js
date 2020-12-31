@@ -26,7 +26,7 @@ function GameTable(props) {
   const { games : {games = [], loading} , gamesDispatch } = useGameState();
   const { userDetails } = useAuthState();
   const [show, setShow] = useState(false);
-  const [editData, setEditData] = useState({});
+  const [editData, setEditData] = useState('');
   useEffect(async ()=>{
     let res
 
@@ -40,9 +40,9 @@ function GameTable(props) {
 
   const toggleModal = () => {
     setShow(!show)
-    if(!show){
-      setEditData({})
-    }
+    // if(!show){
+    //   setEditData({})
+    // }
   }
 
   const deleteRecord = (id) => {
@@ -72,11 +72,6 @@ function GameTable(props) {
       }
     })
   }
-
-  const resetEditData = () => {
-    setEditData({});
-  }
-
   const editGame = (row) => {
     setEditData(row);
     toggleModal();
@@ -120,10 +115,11 @@ function GameTable(props) {
   function actionsFormatter (cell, row, rowIndex, formatExtraData) { 
     return ( 
       <div>
-        <Button color="warning" className="ml-auto" onClick={()=>goToPreview(row.gameSlug)}>Preview</Button>
-        <Button color="danger" className="ml-auto" onClick={()=>deleteRecord(row.gameSlug)}>Delete</Button>
-        <Button color="danger" className="ml-auto" onClick={()=>editGame(row)}>Upload</Button>
-                </div>
+        <i class="far fa-eye ml-2 fa-2x primary pointer" onClick={()=>goToPreview(row.gameSlug)}/>
+        <i class="fas fa-arrow-circle-up ml-2 fa-2x secondary pointer" onClick={()=>editGame(row)}/>
+        <i class="fas fa-times-circle ml-2 fa-2x danger pointer" onClick={()=>deleteRecord(gamesDispatch,row.gameSlug)}/>
+     
+        </div>
         ); 
   } 
 
@@ -138,9 +134,10 @@ function GameTable(props) {
 
   return (                                                                                                                                                                                                                                                                                                                                                          
     <Page.Content title="My Games">
-      <Button color="primary" onClick={toggleModal}>
-        Add Game
-      </Button>
+      <div className="text-right mb-4"><i class="fas fa-plus-circle primary fa-3x pointer"  onClick={toggleModal}/></div>
+      {/* <i class="fas fa-arrow-up"></i> */}
+                
+    
       <Grid.Row cards={true}>
         <Grid.Col width={12}>
             {loading ? <div className="text-center mt-5 mb-5"><Spinner animation="border" role="status">
@@ -157,11 +154,12 @@ function GameTable(props) {
             }
         </Grid.Col>
       </Grid.Row>
-      <Builder show={show}
+      { show && <Builder
                 toggleModal={toggleModal}
                 editData={editData} 
-                resetEditData={resetEditData}
+                setEditData={setEditData}
                 history={props.history}/>
+      }
     </Page.Content>
     
   );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

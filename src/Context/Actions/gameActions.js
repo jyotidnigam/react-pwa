@@ -1,5 +1,5 @@
 import { gamesByUserService , gameById, gameUploadService, fetchAllGameService,
-deleteGameService, updateGame} from '../../services/gamesService';
+deleteGameService, updateGameService} from '../../services/gamesService';
  
 export async function getGamesByUser(dispatch, userId) {
   try {
@@ -73,7 +73,7 @@ export async function createGame(dispatch, data) {
 export async function updateGame(dispatch, data) {
   try {
     dispatch({ type: 'UPDATE_GAME_REQUEST' });
-    let response = await gameUploadService(data)
+    let response = await updateGameService(data)
  
     if (response.data) {
       dispatch({ type: 'UPDATE_GAME_SUCCESS', payload: response.data });

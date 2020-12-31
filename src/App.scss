@@ -1,5 +1,12 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
+  .primary { color: #007bff; }
+  .secondary { color:#1ab57a } 
+  .danger { color: red;} 
+  .warning { color: #f2ff25;} 
+  .default {color: #000;} 
+  .pointer { cursor: pointer;}
+
 .App {
   .navbar {
   .navbar-brand {

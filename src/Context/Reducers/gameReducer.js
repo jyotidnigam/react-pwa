@@ -93,7 +93,7 @@ export const GamesReducer = (gameInitialState, action) => {
         games: gameInitialState.games,
         loading: false
       };
-    case "UPADATE_GAME_ERROR":
+    case "UPDATE_GAME_ERROR":
       return {
         ...gameInitialState,
         loading: false,
