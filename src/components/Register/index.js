@@ -7,7 +7,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useAuthDispatch } from '../../Context';
 import { registerUser } from '../../Context/Actions/authActions';
 
-
 const Register = (props) => {
   const dispatch = useAuthDispatch();
   return (
@@ -19,7 +18,6 @@ const Register = (props) => {
           password: "",
         }}
         validate={values => {
-          // same as above, but feel free to move this into a class method now.
           let errors = {};
           if (!values.name) {
             errors.name = "Required";
@@ -55,15 +53,15 @@ const Register = (props) => {
           handleSubmit,
           isSubmitting,
         }) => (
-            <TablerRegisterPage
-              onSubmit={handleSubmit}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              values={values}
-              errors={errors}
-              touched={touched}
-            />
-          )}
+          <TablerRegisterPage
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            values={values}
+            errors={errors}
+            touched={touched}
+          />
+        )}
       />
       <Container>
         <Row>

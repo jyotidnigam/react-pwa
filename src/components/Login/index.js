@@ -20,7 +20,6 @@ const Login = (props) => {
           password: "",
         }}
         validate={values => {
-          // same as above, but feel free to move this into a class method now.
           let errors = {};
           if (!values.email) {
             errors.email = "Required";
@@ -50,15 +49,15 @@ const Login = (props) => {
           handleSubmit,
           isSubmitting,
         }) => (
-            <TablerLoginPage
-              onSubmit={handleSubmit}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              values={values}
-              errors={errors}
-              touched={touched}
-            />
-          )}
+          <TablerLoginPage
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            values={values}
+            errors={errors}
+            touched={touched}
+          />
+        )}
       />
       <Container>
         <Row>

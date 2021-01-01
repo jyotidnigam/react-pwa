@@ -4,7 +4,7 @@ export const gameInitialState = {
   errorMessage: null,
   game: {},
 };
- 
+
 export const GamesReducer = (gameInitialState, action) => {
   switch (action.type) {
     case "GAMES_REQUEST":
@@ -18,14 +18,14 @@ export const GamesReducer = (gameInitialState, action) => {
         games: action.payload,
         loading: false
       };
-      
+
     case "GAMES_ERROR":
       return {
         ...gameInitialState,
         loading: false,
         errorMessage: action.error
-      }; 
-    
+      };
+
     case "GAME_REQUEST":
       return {
         ...gameInitialState,
@@ -38,11 +38,11 @@ export const GamesReducer = (gameInitialState, action) => {
         loading: false
       };
     case "GAME_ERROR":
-        return {
-          ...gameInitialState,
-          loading: false,
-          errorMessage: action.error
-        }; 
+      return {
+        ...gameInitialState,
+        loading: false,
+        errorMessage: action.error
+      };
 
     case "CREATE_GAME_REQUEST":
       return {
@@ -61,7 +61,7 @@ export const GamesReducer = (gameInitialState, action) => {
         loading: false,
         errorMessage: action.error
       };
-      
+
     case "DELETE_GAME_REQUEST":
       return {
         ...gameInitialState,
@@ -86,7 +86,7 @@ export const GamesReducer = (gameInitialState, action) => {
         loading: true
       };
     case "UPDATE_GAME_SUCCESS":
-      const i = gameInitialState.games.findIndex((g)=>g.gameSlug === action.payload.gameSlug)
+      const i = gameInitialState.games.findIndex((g) => g.gameSlug === action.payload.gameSlug)
       gameInitialState.games.splice(i, 1, action.payload);
       return {
         ...gameInitialState,
@@ -99,7 +99,7 @@ export const GamesReducer = (gameInitialState, action) => {
         loading: false,
         errorMessage: action.error
       };
-          
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

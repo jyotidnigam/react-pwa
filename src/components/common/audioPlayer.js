@@ -3,9 +3,9 @@ const Music = () => {
 
   return (
     <div>
-        <audio id="player" autoPlay>
-          <source type="audio/mp3"/>
-        </audio>
+      <audio id="player" autoPlay>
+        <source type="audio/mp3" />
+      </audio>
 
     </div>
   );
