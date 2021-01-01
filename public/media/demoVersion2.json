@@ -1,0 +1,181 @@
+{
+    "config":{
+        "rootScene":"DEMO_01"
+    },
+    "scenes":{
+        "DEMO_01":{
+            "image":"DEMO_01.jpg",
+            "message":"As one of Jax's favorite fans, she's reached out to you for a little help. Specifically she wants you to help direct her in her newest lewdest photoshoot!",
+            "choices":[
+                {
+                    "text":"PLAY",
+                    "followupScene":"DEMO_01a"
+                }
+            ]
+        },
+        "DEMO_01a":{
+            "image":"DEMO_01a.jpg",
+            "sound":"DEMO_01a.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01a.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"JAX IS CALLING",
+            "choices":[
+                {
+                    "text":"ANSWER THE CALL",
+                    "followupScene":"DEMO_01b"
+                }
+            ]
+        },
+        "DEMO_01b":{
+            "image":"DEMO_01b.jpg",
+            "sound":"DEMO_01b.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01b.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"WELL, WELL! LOOK WHO FINALLY PICKED UP!",
+            "choices":[
+                {
+                    "text":"I'M PRETTY SURE I ANSWERED RIGHT AWAY",
+                    "followupScene":"DEMO_01c"
+                },
+                {
+                    "text":"GOOD THINGS COME TO THOSE WHO WAIT",
+                    "followupScene":"DEMO_01c"
+                }
+            ]
+        },
+        "DEMO_01c":{
+            "image":"DEMO_01c.jpg",
+            "sound":"DEMO_01c.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01c.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"WELL, LET'S GET RIGHT TO IT. I NEED YOUR HELP.",
+            "choices":[
+                {
+                    "text":"OF COURSE YOU DO",
+                    "followupScene":"DEMO_01d"
+                },
+                {
+                    "text":"ALWAYS HERE TO HELP MY FAVORITE WAIFU",
+                    "followupScene":"DEMO_01d"
+                },
+                {
+                    "text":"GO ON.",
+                    "followupScene":"DEMO_01d"
+                }
+            ]
+        },
+        "DEMO_01d":{
+            "image":"DEMO_01d.jpg",
+            "sound":"DEMO_01d.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01d.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"UMM...YOU SEE... I'M GETTING READY TO START MY SHOOT AND I WAS HOPING FOR SOME... DIRECTIONAL INSPIRATION... THIS IS JUST A TASTE, THOUGH. GIVE ME A CALL IF YOU WANT TO HELP ME OUT MORE.",
+            "choices":[
+                {
+                    "text":"JUST A SNEAK PEEK, THEN?",
+                    "followupScene":"DEMO_01e"
+                },
+                {
+                    "text":"ALRIGHT, SHOW ME THE SPOTS!",
+                    "followupScene":"DEMO_01e"
+                },
+                {
+                    "text":"I'M ALL EARS. CAT EARS, THAT IS!",
+                    "followupScene":"DEMO_01e"
+                }
+            ]
+        },
+        "DEMO_01e":{
+            "image":"DEMO_01e.jpg",
+            "sound":"DEMO_01e.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01e.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"SO, I WAS THINKING MAYBE... HERE?",
+            "choices":[
+                {
+                    "text":"NOT BAD AT ALL! WHAT ELSE YOU GOT?",
+                    "followupScene":"DEMO_01f"
+                }
+            ]
+        },
+        "DEMO_01f":{
+            "image":"DEMO_01f.jpg",
+            "sound":"DEMO_01f.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01f.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"AND HERE. THIS WAS ONE I REALLY LIKED. WHAT DO YOU THINK?",
+            "choices":[
+                {
+                    "text":"YES. GOOD COMPOSURE. WHAT ELSE YOU GOT?",
+                    "followupScene":"DEMO_01g"
+                },
+                {
+                    "text":"GOOD. BUT I THINK YOU CAN DO LEWDER...",
+                    "followupScene":"DEMO_01g"
+                }
+            ]
+        },
+        "DEMO_01g":{
+            "image":"DEMO_01g.jpg",
+            "sound":"DEMO_01g.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01g.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"ALRIGHT. I LIKE TO CHALLENGE MYSELF. HOW ABOUT HERE?",
+            "choices":[
+                {
+                    "text":"YES. THIS IS DEFINITELY A WINNER",
+                    "followupScene":"DEMO_01h"
+                },
+                {
+                    "text":"CAN I SEE THOSE SPOTS AGAIN?",
+                    "followupScene":"DEMO_01h"
+                }
+            ]
+        },
+        "DEMO_01h":{
+            "image":"DEMO_01h.jpg",
+            "sound":"DEMO_01h.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_01h.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"WELL, YOU GET THE IDEA... THIS IS JUST A TASTE, THOUGH. LET ME GIVE YOU SOMETHING TO THINK ABOUT, MMM?",
+            "choices":[
+                {
+                    "text":"THANKS FOR TAKING ME ALONG FOR THE RIDE...",
+                    "followupScene":"DEMO_01i"
+                }
+            ]
+        },
+        "DEMO_01i":{
+            "image":"DEMO_01i.jpg",
+            "sound":"DEMO_01i.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "movie":"DEMO_END_01.mp4",
+            "moviePlaybackOption":"repeat",
+            "message":"MORE STORIIITIME WITH JAX AVAILABLE IN THE FULL VERSION!",
+            "choices":[
+                {
+                    "text":"PLAY AGAIN.",
+                    "followupScene":"DEMO_01"
+                },
+                {
+                    "text":"END!",
+                    "followupScene":"DEMO_END_01"
+                }
+            ]
+        },
+        "DEMO_END_01":{
+             "image":"DEMO_END_01.jpg",
+            "sound":"DEMO_END_01.mp3",
+            "music":"DEMO_01_BGM.mp3",
+            "message":";)!"
+        }
+    }
+}

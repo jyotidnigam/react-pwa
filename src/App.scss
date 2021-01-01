@@ -1,5 +1,12 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
+  .primary { color: #007bff; }
+  .secondary { color:#1ab57a } 
+  .danger { color: red;} 
+  .warning { color: #f2ff25;} 
+  .default {color: #000;} 
+  .pointer { cursor: pointer;}
+
 .App {
   .navbar {
   .navbar-brand {
@@ -14,6 +21,21 @@
   }
    
   }
+}
+.loading-modal {
+  .modal-dialog {
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+  }
+}
+  .modal-backdrop {
+    background-color: rgba(0,0,0,.0001) !important;
+}
 }
 
 

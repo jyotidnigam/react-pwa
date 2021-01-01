@@ -42,7 +42,7 @@ const Register = (props) => {
           const res = await registerUser(dispatch, values);
           if (!res.error) {
             alert("User registered successfully!");
-            props.history.push('/login')
+            props.history.push('/')
           }
           else alert(res.error);
         }}
@@ -68,7 +68,7 @@ const Register = (props) => {
       <Container>
         <Row>
           <Col xs={12}>
-            Already a user?, click here to <Link to="/login">login</Link>
+            Already a user?, click here to <Link to="/">login</Link>
           </Col>
         </Row>
       </Container>

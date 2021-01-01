@@ -1,15 +1,16 @@
 import * as React from "react";
 import { Formik } from "formik";
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Modal } from "react-bootstrap";
 import { LoginPage as TablerLoginPage } from "tabler-react";
 
-import { useAuthDispatch } from '../../Context';
+import { useAuthDispatch, useAuthState } from '../../Context';
 import { loginUser } from '../../Context/Actions/authActions';
 
 const Login = (props) => {
 
   const dispatch = useAuthDispatch();
+  const { loading } = useAuthState();
 
   return (
     <div>
@@ -66,6 +67,9 @@ const Login = (props) => {
           </Col>
         </Row>
       </Container>
+      {loading ? <Modal show={true} className="loading-modal text-center">
+        <Spinner animation="border" variant="primary" />
+      </Modal> : ""}
     </div>
   );
 }
